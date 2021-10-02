@@ -4,7 +4,7 @@ docker run \
     -it \
     --rm \
     --env USER \
-    --volume "${HOME}"/.wrangler/config:/root/.wrangler/config:ro \
+    --volume "${HOME}"/.wrangler/config:/root/.wrangler/config \
     --volume "${PWD}":/worker \
     --publish 8787:8787 \
     --name wrangler \

@@ -1,13 +1,13 @@
 # Wrangler docker
 
-Run [`wrangler`](https://github.com/cloudflare/wrangler) commands via a docker container rather than have to install it! I've found this pretty useful as Mac OS support for `wrangler` can be sketchy™.
+Run [`wrangler`](https://github.com/cloudflare/wrangler) commands via a docker container rather than have to install it! I've found this pretty useful as Mac OS support for `wrangler` can be sketchy™ (specifically the `dev` subcommand).
 
-## Build
+## Build & Install
 
 1. Build the docker image from this repo:
 
    ```sh
-   docker build --no-cache -t local/cloudflare-wrangler .
+   ./build.sh
    ```
 
 2. Copy this repo's `wrangler` file to somewhere in your `$PATH`:
@@ -17,11 +17,18 @@ Run [`wrangler`](https://github.com/cloudflare/wrangler) commands via a docker c
    chmod +x wrangler
 
    cp wrangler /usr/local/bin/
+   # if you don't want to mess with any other wrangler installs
+   # rename this file something like wranglerdev and use that instead
+   # e.g
+   # cp wrangler /usr/local/bin/wranglerdev
 
    # OPTIONAL
    # check it's available
    which wrangler
    # -> /usr/local/bin/wrangler
+   # or
+   # which wranglerdev
+   # -> /usr/local/bin/wranglerdev
    ```
 
 ## Usage
@@ -43,6 +50,7 @@ cd my-worker
 
 # wrangler help
 wrangler dev
+# or wranglerdev dev
 
 # etc...
 ```
