@@ -1,0 +1,14 @@
+#!/bin/sh
+
+docker run \
+    -it \
+    --rm \
+    --env USER \
+    --volume "${HOME}"/.wrangler/config:/root/.wrangler/config:ro \
+    --volume "${PWD}":/worker \
+    --publish 8787:8787 \
+    --name wrangler \
+    local/cloudflare-wrangler:latest \
+    "$@"
+
+exit $?
