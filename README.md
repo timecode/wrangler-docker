@@ -26,7 +26,17 @@ Run [`wrangler`](https://github.com/cloudflare/wrangler) commands via a docker c
 
 ## Usage
 
-From a worker's root directory, simply use `wrangler` as normal e.g.
+Ensure the worker's `wrangler.toml` file includes the following:
+
+```toml
+[dev]
+ip = "0.0.0.0"
+port = 8787
+local_protocol="http"
+upstream_protocol="https"
+```
+
+From the worker's root directory, simply use `wrangler` as normal e.g.
 
 ```sh
 cd my-worker
